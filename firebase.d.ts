@@ -1043,6 +1043,22 @@ declare namespace firebase {
          * Returns a Reference to the Query's location.
          */
         ref:DatabaseReference;
+        
+        /**
+         * Creates a Query which includes children which match the specified value.
+         * 
+         * Using startAt(), endAt(), and equalTo() allows us to choose arbitrary starting and ending points for our queries.
+         * 
+         * The optional key argument can be used to further limit the range of the query. 
+         * If it is specified, then children that have exactly the specified value must also have exactly the specified key as their key name. 
+         * This can be used to filter result sets with many matches for the same value.
+         * 
+         * @param {*} value The value to match for. The argument type depends on which orderBy*() function was used in this query. Specify a value that matches the orderBy*() type. When used in combination with orderByKey(), the value must be a string.
+         * @param {*} [key] The child key to start at, among the children with the previously specified priority. This argument is only allowed if ordering by priority.
+         * @returns {DatabaseQuery} 
+         */
+        startAt(value:any,key?:any):DatabaseQuery;
+        
         /**
          * Creates a Query with the specified ending point.
          * 
